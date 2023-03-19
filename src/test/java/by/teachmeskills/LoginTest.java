@@ -1,8 +1,6 @@
 package by.teachmeskills;
 
 import org.assertj.core.api.Assertions;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import static by.teachmeskills.LoginPage.*;
@@ -59,13 +57,4 @@ public class LoginTest extends BaseTest {
         assertThat(loginPage.getErrorText()).isEqualTo(LOGIN_ERROR)
                 .as("The error" + LOGIN_ERROR + "should be displayed if username has not been entered");
     }
-
-//    @Test
-//    public void checkProblemUser() {
-//        LoginPage loginPage = new LoginPage(driver);
-//        loginPage.open()
-//                .loginAsProblemUser();
-//
-//        //assertThat(loginPage.getErrorText()).isEqualTo()
-//    }
 }

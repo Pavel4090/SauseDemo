@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="JenkinsTest">
+    <listeners>
+        <listener class-name="util.testng.AnnotationTransformer"/>
+        <listener class-name="util.testng.TestListener"/>
+    </listeners>
+    <test name="Tests one">
+        <classes>
+            <class name="by.teachmeskills.ProductsTest"/>
+            <class name="by.teachmeskills.CartTest"/>
+            <class name="by.teachmeskills.LoginTest"/>
+            <class name="by.teachmeskills.LogoutTest"/>
+        </classes>
+    </test>
+</suite>
