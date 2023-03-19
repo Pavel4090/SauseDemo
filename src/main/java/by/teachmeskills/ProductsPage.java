@@ -57,9 +57,10 @@ public class ProductsPage extends BasePage {
         return title.getText();
     }
 
-//    public void getBackPackIMG() {
-//        WebElement elementIMG = driver.findElement(By.xpath("//img[@src='/static/media/sl-404.168b1cce.jpg']"));
-//        String attribute1 = elementIMG.getAttribute("src");
-//        System.out.println(attribute1);
-//    }
+    public String getBackPackIMG() {
+        WebElement elementIMG = driver.findElement(By.xpath("//img[@alt='Sauce Labs Backpack']"));
+        String attribute1 = elementIMG.getAttribute("src");
+        System.out.println(attribute1);
+        return attribute1;
+    }
 }

@@ -27,18 +27,16 @@ public class LoginTest extends BaseTest {
                 .as("The error" + LOCKED_USER_ERROR + "should be displayed if username 'locked_out_user'");
     }
 
-//    @Test
-//    public void checkProblemUser() {
-//        LoginPage loginPage = new LoginPage(driver).open();
-//        loginPage.loginAsProblemUser().getBackPackIMG();
-//
-//        WebElement imgElement = driver.findElement(By.xpath("//img[@src='/static/media/sl-404.168b1cce.jpg']"));
-//        String attribute2 = imgElement.getAttribute("src");
-//        System.out.println(attribute2);
-//        assertThat(loginPage).as("On product page should be displayed products img")
-//                .isNotEqualTo(attribute2);
-//
-//    }
+    @Test
+    public void checkProblemUser() {
+        String productsPage = new LoginPage(driver).open().loginAsProblemUser().getBackPackIMG();
+
+        WebElement imgElement = driver.findElement(By.xpath("//img[@src='/static/media/sl-404.168b1cce.jpg']"));
+        String attribute2 = imgElement.getAttribute("src");
+        System.out.println(attribute2);
+        assertThat(attribute2).as("On product displayed normal products img")
+                .isEqualTo(productsPage);
+    }
 
     @Test
     public void checkLoginWithoutPassword() {
@@ -59,13 +57,4 @@ public class LoginTest extends BaseTest {
         assertThat(loginPage.getErrorText()).isEqualTo(LOGIN_ERROR)
                 .as("The error" + LOGIN_ERROR + "should be displayed if username has not been entered");
     }
-
-//    @Test
-//    public void checkProblemUser() {
-//        LoginPage loginPage = new LoginPage(driver);
-//        loginPage.open()
-//                .loginAsProblemUser();
-//
-//        //assertThat(loginPage.getErrorText()).isEqualTo()
-//    }
 }
