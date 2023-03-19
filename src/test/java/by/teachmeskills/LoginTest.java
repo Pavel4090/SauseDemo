@@ -1,6 +1,8 @@
 package by.teachmeskills;
 
 import org.assertj.core.api.Assertions;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import static by.teachmeskills.LoginPage.*;
@@ -25,18 +27,16 @@ public class LoginTest extends BaseTest {
                 .as("The error" + LOCKED_USER_ERROR + "should be displayed if username 'locked_out_user'");
     }
 
-//    @Test
-//    public void checkProblemUser() {
-//        LoginPage loginPage = new LoginPage(driver).open();
-//        loginPage.loginAsProblemUser().getBackPackIMG();
-//
-//        WebElement imgElement = driver.findElement(By.xpath("//img[@src='/static/media/sl-404.168b1cce.jpg']"));
-//        String attribute2 = imgElement.getAttribute("src");
-//        System.out.println(attribute2);
-//        assertThat(loginPage).as("On product page should be displayed products img")
-//                .isNotEqualTo(attribute2);
-//
-//    }
+    @Test
+    public void checkProblemUser() {
+        String productsPage = new LoginPage(driver).open().loginAsProblemUser().getBackPackIMG();
+
+        WebElement imgElement = driver.findElement(By.xpath("//img[@src='/static/media/sl-404.168b1cce.jpg']"));
+        String attribute2 = imgElement.getAttribute("src");
+        System.out.println(attribute2);
+        assertThat(attribute2).as("On product displayed normal products img")
+                .isEqualTo(productsPage);
+    }
 
     @Test
     public void checkLoginWithoutPassword() {

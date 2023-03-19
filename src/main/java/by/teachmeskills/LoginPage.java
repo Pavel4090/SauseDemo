@@ -2,10 +2,12 @@ package by.teachmeskills;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import util.PropertiesLoader;
+
+import java.util.Properties;
 
 public class LoginPage extends BasePage {
 
-    public static final String BASE_URL = "https://www.saucedemo.com/";
     private static final By USER_NAME = By.id("user-name");
     private static final By PASSWORD = By.id("password");
     private static final By LOGIN_BUTTON = By.id("login-button");
@@ -20,7 +22,8 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage open() {
-        driver.get(BASE_URL);
+        Properties properties = PropertiesLoader.loadProperties();
+        driver.get(properties.getProperty("base.url"));
         return new LoginPage(driver);
     }
 
@@ -40,10 +43,10 @@ public class LoginPage extends BasePage {
         return new LoginPage(driver);
     }
 
-//    public ProductsPage loginAsProblemUser() {
-//        loginAs("problem_user", "secret_sauce");
-//        return new ProductsPage(driver);
-//    }
+    public ProductsPage loginAsProblemUser() {
+        loginAs("problem_user", "secret_sauce");
+        return new ProductsPage(driver);
+    }
 
     public String getErrorText() {
         return driver.findElement(ERROR).getText();
