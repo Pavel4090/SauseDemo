@@ -6,7 +6,10 @@ pipeline {
         maven "M3"
     }
 
-    properties([parameters([gitParameter(branch: '', branchFilter: '.*', defaultValue: 'origin/master', description: 'Select branch', name: 'Branch', tagFilter: '*', type: 'GitParameterDefinition')])])
+    //properties([parameters([gitParameter(branch: '', branchFilter: '.*', defaultValue: 'origin/master', description: 'Select branch', name: 'Branch', tagFilter: '*', type: 'GitParameterDefinition')])])
+parameters {
+ gitParameter branchFilter: 'origin/(.*)', defaultValue: 'SauceDemo', name: 'Branch', type: 'PT_BRANCH'
+}
 
     stages {
         stage('Build') {
