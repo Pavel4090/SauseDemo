@@ -7,7 +7,7 @@ pipeline {
     }
 
 parameters {
- gitParameter branchFilter: 'origin/(.*)', defaultValue: 'SauceDemo', name: 'Branch', type: 'PT_BRANCH'
+ gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'Branch', type: 'PT_BRANCH'
 }
 
     stages {
@@ -20,7 +20,7 @@ parameters {
                 //sh "mvn -Dmaven.test.failure.ignore=true clean package"
 
                 // To run Maven on a Windows agent, use
-                bat "mvn -Dmaven.test.failure.ignore=true clean package"
+                bat "mvn clean test -DsuiteXmlFile=src/test/resources/smoke.xml"
             }
 
             post {
