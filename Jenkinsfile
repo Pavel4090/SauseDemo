@@ -6,7 +6,6 @@ pipeline {
         maven "M3"
     }
 
-    //properties([parameters([gitParameter(branch: '', branchFilter: '.*', defaultValue: 'origin/master', description: 'Select branch', name: 'Branch', tagFilter: '*', type: 'GitParameterDefinition')])])
 parameters {
  gitParameter branchFilter: 'origin/(.*)', defaultValue: 'SauceDemo', name: 'Branch', type: 'PT_BRANCH'
 }
@@ -15,7 +14,7 @@ parameters {
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
-                git 'https://github.com/Pavel4090/SauseDemo.git'
+                git branch: "${params.BRANCH}", url: 'https://github.com/Pavel4090/SauseDemo.git'
 
                 // Run Maven on a Unix agent.
                 //sh "mvn -Dmaven.test.failure.ignore=true clean package"
