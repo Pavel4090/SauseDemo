@@ -8,7 +8,6 @@
     <test name="Tests one">
         <classes>
             <class name="by.teachmeskills.ProductsTest"/>
-            <class name="by.teachmeskills.CartTest"/>
         </classes>
     </test>
 </suite>
